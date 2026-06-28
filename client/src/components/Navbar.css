@@ -1,0 +1,85 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--text-primary) !important; /* ✅ Force visibility */
+}
+
+.navbar-logo span {
+  color: var(--accent);
+}
+
+.navbar-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  color: var(--text-primary) !important; /* ✅ Force visibility */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  font-size: 0.95rem;
+}
+
+.navbar-links a:hover {
+  color: var(--accent);
+}
+
+.navbar-admin {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: var(--accent);
+  color: #ffffff !important;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.navbar-admin:hover {
+  background: var(--accent-hover);
+  transform: scale(1.02);
+}
+
+.navbar-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .navbar-links {
+    display: flex;
+  }
+  .navbar-toggle {
+    display: none;
+  }
+}

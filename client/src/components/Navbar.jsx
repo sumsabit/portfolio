@@ -1,33 +1,29 @@
-function Navbar() {
+import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
+import './Navbar.css';
+
+export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center px-10 py-6 bg-slate-900 border-b border-slate-800">
-      <h1 className="text-2xl font-bold text-cyan-400">
-        Sumeya
-      </h1>
-
-      <ul className="flex gap-8 text-sm font-medium">
-        <li className="cursor-pointer hover:text-cyan-400">
-          Home
-        </li>
-
-        <li className="cursor-pointer hover:text-cyan-400">
-          About
-        </li>
-
-        <li className="cursor-pointer hover:text-cyan-400">
-          Skills
-        </li>
-
-        <li className="cursor-pointer hover:text-cyan-400">
-          Projects
-        </li>
-
-        <li className="cursor-pointer hover:text-cyan-400">
-          Contact
-        </li>
-      </ul>
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-logo">
+          <span>Sumeya</span> Sabit
+        </Link>
+        <div className="navbar-links">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/#skills">Skills</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/admin/login" className="navbar-admin">Admin</Link>
+          <ThemeToggle />   {/* ✅ Global toggle */}
+        </div>
+        <button className="navbar-toggle" aria-label="Menu">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
     </nav>
   );
 }
-
-export default Navbar;

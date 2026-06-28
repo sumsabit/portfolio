@@ -1,22 +1,34 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
+import AboutPage from './pages/AboutPage';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Navbar />
+        <main className="container mx-auto p-4">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

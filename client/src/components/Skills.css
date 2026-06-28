@@ -1,0 +1,113 @@
+/* Skills section – external styles */
+.skills-section {
+  padding: 80px 0;
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.skills-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.skills-title span {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.skills-subtitle {
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0.5rem auto 0;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.skill-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+.skill-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px var(--shadow-color);
+  transform: translateY(-2px);
+}
+
+.skill-category-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0.3rem 0;
+  transition: color 0.2s;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.skill-list-item:hover {
+  color: var(--text-primary);
+}
+
+.skill-list-item .skill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  flex-shrink: 0;
+}
+.skill-list-item .skill-icon i {
+  font-size: 1.6rem;
+  width: 1.6rem;
+  text-align: center;
+  color: var(--accent);
+}
