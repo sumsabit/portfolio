@@ -4,6 +4,7 @@
 > Features a dark/light theme, admin dashboard, contact form with email notifications, and a fully customizable skills/projects section.
 
 ## 🌟 Features
+<<<<<<< HEAD
 
 ### Frontend
 - **React + Vite** – fast, modern SPA
@@ -45,4 +46,7 @@
 ### Clone the repository
 ```bash
 git clone https://github.com/yourusername/portfolio.git
+=======
+...
+>>>>>>> e25a9df (Update README)
 cd portfolio
