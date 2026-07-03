@@ -20,9 +20,9 @@ export default defineConfig({
       },
     },
   },
-  resolve: {
-    alias: {
-      // Ensure no problematic aliases
-    },
-  },
+  // resolve: {
+  //   alias: {
+  //     // Ensure no problematic aliases
+  //   },
+  // },
 });
