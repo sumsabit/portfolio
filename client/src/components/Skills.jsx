@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Skills.css';
+import api from '../api/client';
 
 export default function Skills() {
   const [skills, setSkills] = useState({});
@@ -16,9 +17,8 @@ export default function Skills() {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const response = await fetch('http://localhost:3000/skills');
-        if (!response.ok) throw new Error('Failed to fetch');
-        const data = await response.json();
+      const response = await api.get('/skills');
+       const data = response.data;
         
         // Group skills by category
         const grouped = data.reduce((acc, skill) => {

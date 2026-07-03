@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Projects.css';
+import api from '../api/client';
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
@@ -8,7 +9,7 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('http://localhost:3000/projects');
+const response = await api.get('/projects');
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
         setProjects(data);
