@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/client';
-import '../components/AdminDashboard.css';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('projects');
