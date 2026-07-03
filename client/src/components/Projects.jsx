@@ -2,25 +2,20 @@ import { useState, useEffect } from 'react';
 import './Projects.css';
 import api from '../api/client';
 
-export default function Projects() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+useEffect(() => {
+  const fetchProjects = async () => {
+    try {
+      const response = await api.get('/projects');
+      setProjects(response.data);
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-const response = await api.get('/projects');
-        if (!response.ok) throw new Error('Failed to fetch');
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProjects();
-  }, []);
+  fetchProjects();
+}, []);
 
   if (loading) {
     return <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '2rem' }}>Loading projects...</p>;
