@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SkillsPage from "./pages/SkillsPage";
+import SkillsPage from "./pages/SkillsPage";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -21,6 +22,7 @@ function App() {
         <main className="container mx-auto p-4">
           <Routes>
             <Route path="/" element={<Home />} />
+          <Route path="/skills" element={<SkillsPage />} />
           <Route path="/skills" element={<SkillsPage />} />
             <Route path="/about" element={<AboutPage />} />
 <Route path="/skills" element={<SkillsPage />} />
