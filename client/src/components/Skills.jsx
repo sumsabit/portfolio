@@ -6,7 +6,6 @@ export default function Skills() {
   const [skills, setSkills] = useState({});
   const [loading, setLoading] = useState(true);
 
-  // Fixed order of known categories (without "Other")
   const categoryOrder = [
     'Languages',
     'Frontend',
@@ -17,19 +16,18 @@ export default function Skills() {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-      const response = await api.get('/skills');
-       const data = response.data;
-        
-        // Group skills by category
+        console.log('🔍 Skills component mounted, fetching data...'); // ← DEBUG
+        const response = await api.get('/skills');
+        const data = response.data;
+        console.log('📦 Skills data received:', data); // ← DEBUG
+
         const grouped = data.reduce((acc, skill) => {
           const category = skill.category || 'Other';
           if (!acc[category]) acc[category] = [];
-          
           let icon = null;
           if (skill.icon) {
             icon = <i className={skill.icon}></i>;
           }
-          
           acc[category].push({
             name: skill.level ? `${skill.name} (${skill.level})` : skill.name,
             icon: icon,
@@ -37,10 +35,10 @@ export default function Skills() {
           });
           return acc;
         }, {});
-        
+
         setSkills(grouped);
       } catch (error) {
-        console.error('Error fetching skills:', error);
+        console.error('❌ Error fetching skills:', error);
         setSkills({});
       } finally {
         setLoading(false);
@@ -57,23 +55,14 @@ export default function Skills() {
     return <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '2rem' }}>No skills added yet.</p>;
   }
 
-  // ✅ New sorting logic
   const sortedCategories = Object.keys(skills).sort((a, b) => {
-    // 1. "Other" always goes last
     if (a === 'Other') return 1;
     if (b === 'Other') return -1;
-
-    // 2. Known categories are ordered by categoryOrder
     const indexA = categoryOrder.indexOf(a);
     const indexB = categoryOrder.indexOf(b);
-
     if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-
-    // 3. Known categories come before unknown ones
     if (indexA !== -1) return -1;
     if (indexB !== -1) return 1;
-
-    // 4. Both unknown: sort alphabetically
     return a.localeCompare(b);
   });
 
@@ -88,7 +77,6 @@ export default function Skills() {
             Technologies and tools I use across full-stack development and security.
           </p>
         </div>
-
         <div className="skills-grid">
           {sortedCategories.map((category) => (
             <div key={category} className="skill-card">
