@@ -16,7 +16,7 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: 1.5rem;
-  padding: 2rem;                          /* ✅ Equal padding all sides */
+  padding: 2rem;
   box-shadow: 0 20px 60px var(--shadow-color);
 }
 
@@ -45,36 +45,38 @@
   margin-bottom: 1rem;
 }
 
-/* ✅ Inputs – equal left/right padding */
+/* =========================
+   INPUTS – fully theme‑aware
+========================= */
 .contact-form-input,
 .contact-form-textarea {
   width: 100%;
-  padding: 0.75rem 1.2rem;                
-  background: rgba(20, 20, 30, 0.8) !important;
-  border: 2px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 0.75rem 1.2rem;
+  background: var(--input-bg);
+  border: 2px solid var(--input-border);
   border-radius: 0.75rem;
-  color: #e8e8e8 !important;
+  color: var(--input-text);
   font-size: 0.95rem;
   transition: all 0.3s ease;
   outline: none;
-  box-sizing: border-box;                  
+  box-sizing: border-box;
 }
 
 .contact-form-input::placeholder,
 .contact-form-textarea::placeholder {
-  color: rgba(255, 255, 255, 0.3) !important;
+  color: var(--input-placeholder);
 }
 
 .contact-form-input:focus,
 .contact-form-textarea:focus {
-  border-color: #3b82f6 !important;
+  border-color: var(--accent) !important;
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important;
-  background: rgba(25, 25, 35, 0.9) !important;
+  background: var(--input-focus-bg);
 }
 
 .contact-form-input:hover,
 .contact-form-textarea:hover {
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: var(--input-hover-border);
 }
 
 .contact-form-textarea {
@@ -82,7 +84,9 @@
   resize: vertical;
 }
 
-/* Submit Button */
+/* =========================
+   SUBMIT BUTTON
+========================= */
 .contact-submit-btn {
   width: 100%;
   padding: 0.75rem 1.5rem;
@@ -108,7 +112,9 @@
   transform: none;
 }
 
-/* Social Links */
+/* =========================
+   SOCIAL LINKS
+========================= */
 .contact-social-links {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
