@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSendMessage } from '../hooks/useSendMessage';
-import '../components/Contact.css';   // ✅ fixed path
+import '../components/Contact.css';   
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
