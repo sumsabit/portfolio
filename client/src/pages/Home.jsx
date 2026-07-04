@@ -6,10 +6,23 @@ import Projects from '../components/Projects';
 export default function Home() {
   return (
     <div className="home-light-mode">
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
+
+      <section id="home">
+        <Hero />
+      </section>
+
+      <section id="about">
+        <About />
+      </section>
+
+      <section id="skills">
+        <Skills />
+      </section>
+
+      <section id="projects">
+        <Projects />
+      </section>
+
     </div>
   );
 }

@@ -16,10 +16,10 @@ export default function Skills() {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        console.log('🔍 Skills component mounted, fetching data...'); // ← DEBUG
+        console.log('Skills component mounted, fetching data...'); // ← DEBUG
         const response = await api.get('/skills');
         const data = response.data;
-        console.log('📦 Skills data received:', data); // ← DEBUG
+        console.log(' Skills data received:', data); // ← DEBUG
 
         const grouped = data.reduce((acc, skill) => {
           const category = skill.category || 'Other';
@@ -38,7 +38,7 @@ export default function Skills() {
 
         setSkills(grouped);
       } catch (error) {
-        console.error('❌ Error fetching skills:', error);
+        console.error(' Error fetching skills:', error);
         setSkills({});
       } finally {
         setLoading(false);
