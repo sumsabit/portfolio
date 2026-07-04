@@ -1,3 +1,4 @@
+/* Contact page – external styles */
 .contact-page {
   min-height: 90vh;
   display: flex;
@@ -15,7 +16,7 @@
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border-color);
   border-radius: 1.5rem;
-  padding: 2.5rem 2rem;
+  padding: 2rem;                          /* ✅ Equal padding all sides */
   box-shadow: 0 20px 60px var(--shadow-color);
 }
 
@@ -24,43 +25,69 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.25rem;
+  text-align: center;
+}
+.contact-title span {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .contact-subtitle {
-  color: var(--text-secondary);
+  color: var(--text-muted);
   font-size: 0.95rem;
+  text-align: center;
   margin-bottom: 1.5rem;
 }
 
+.contact-form-group {
+  margin-bottom: 1rem;
+}
+
+/* ✅ Inputs – equal left/right padding */
 .contact-form-input,
 .contact-form-textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.2rem;                /* ✅ Equal left/right */
+  background: rgba(20, 20, 30, 0.8) !important;
+  border: 2px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 0.75rem;
-  color: var(--text-primary);
+  color: #e8e8e8 !important;
   font-size: 0.95rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
   outline: none;
+  box-sizing: border-box;                  /* Ensures padding is included in width */
 }
 
 .contact-form-input::placeholder,
 .contact-form-textarea::placeholder {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .contact-form-input:focus,
 .contact-form-textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2) !important;
+  background: rgba(25, 25, 35, 0.9) !important;
 }
 
+.contact-form-input:hover,
+.contact-form-textarea:hover {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.contact-form-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Submit Button */
 .contact-submit-btn {
   width: 100%;
   padding: 0.75rem 1.5rem;
   background: var(--accent);
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 0.75rem;
   font-size: 1rem;
@@ -70,8 +97,87 @@
   box-shadow: 0 4px 16px var(--shadow-color);
   margin-top: 0.5rem;
 }
-
 .contact-submit-btn:hover {
   background: var(--accent-hover);
   transform: scale(1.01);
+  box-shadow: 0 6px 24px var(--shadow-color);
+}
+.contact-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Social Links */
+.contact-social-links {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.contact-social-text {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.contact-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+.social-icon i {
+  font-size: 1rem;
+}
+.social-icon:hover {
+  transform: scale(1.02);
+}
+
+.social-icon.email {
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+  border-color: rgba(37, 99, 235, 0.2);
+}
+.social-icon.email:hover {
+  background: rgba(37, 99, 235, 0.25);
+}
+.social-icon.telegram {
+  background: rgba(0, 136, 204, 0.15);
+  color: #60a5fa;
+  border-color: rgba(0, 136, 204, 0.2);
+}
+.social-icon.telegram:hover {
+  background: rgba(0, 136, 204, 0.25);
+}
+.social-icon.linkedin {
+  background: rgba(0, 119, 181, 0.15);
+  color: #60a5fa;
+  border-color: rgba(0, 119, 181, 0.2);
+}
+.social-icon.linkedin:hover {
+  background: rgba(0, 119, 181, 0.25);
+}
+.social-icon.github {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+.social-icon.github:hover {
+  background: rgba(255, 255, 255, 0.12);
 }
