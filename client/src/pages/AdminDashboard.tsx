@@ -31,7 +31,8 @@ export default function AdminDashboard() {
     features: [],
     technologies: '',
     github: '',
-    demo: ''
+    demo: '',
+    reportLink: ''   // ✅ Added reportLink
   });
   const [editingProjectId, setEditingProjectId] = useState(null);
 
@@ -133,7 +134,7 @@ export default function AdminDashboard() {
     } else {
       await api.post('/projects', projectForm);
     }
-    setProjectForm({ title: '', slug: '', description: '', technologies: '', github: '' });
+    setProjectForm({ title: '', slug: '', description: '', features: [], technologies: '', github: '', demo: '', reportLink: '' });
     fetchProjects();
     setLoading(false);
   };
@@ -155,8 +156,10 @@ export default function AdminDashboard() {
       technologies: project.technologies || '',
       github: project.github || '',
       demo: project.demo || '',
+      reportLink: project.reportLink || '',
     });
   };
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/admin/login');
@@ -346,7 +349,6 @@ export default function AdminDashboard() {
           )}
 
           {/* Projects Tab */}
-          {/* Projects Tab */}
           {activeTab === 'projects' && (
             <div className="admin-section">
               <h2>Manage Projects</h2>
@@ -394,6 +396,18 @@ export default function AdminDashboard() {
                   onChange={(e) => setProjectForm({ ...projectForm, github: e.target.value })}
                   className="admin-form-input"
                 />
+                <input
+                  placeholder="Live Demo URL (optional)"
+                  value={projectForm.demo || ''}
+                  onChange={(e) => setProjectForm({ ...projectForm, demo: e.target.value })}
+                  className="admin-form-input"
+                />
+                <input
+                  placeholder="Report Link (optional, e.g., /dvwa-report.pdf)"
+                  value={projectForm.reportLink || ''}
+                  onChange={(e) => setProjectForm({ ...projectForm, reportLink: e.target.value })}
+                  className="admin-form-input"
+                />
                 <div className="admin-form-buttons">
                   <button type="submit" className="admin-submit-btn">
                     {editingProjectId ? 'Update Project' : 'Create Project'}
@@ -403,7 +417,7 @@ export default function AdminDashboard() {
                       type="button"
                       onClick={() => {
                         setEditingProjectId(null);
-                        setProjectForm({ title: '', slug: '', description: '', features: [], technologies: '', github: '' });
+                        setProjectForm({ title: '', slug: '', description: '', features: [], technologies: '', github: '', demo: '', reportLink: '' });
                       }}
                       className="admin-cancel-btn"
                     >
