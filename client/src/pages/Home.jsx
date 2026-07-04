@@ -22,7 +22,9 @@ export default function Home() {
       <section id="projects">
         <Projects />
       </section>
-
+ <section id="contact">
+        <Contact />
+      </section>
     </div>
   );
 }
