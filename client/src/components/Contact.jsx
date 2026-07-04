@@ -73,42 +73,10 @@ export default function Contact() {
           </button>
         </form>
 
-        <div className="contact-social-links">
-          <p className="contact-social-text">Or connect with me on:</p>
-          <div className="contact-social-icons">
-            <a 
-              href="mailto:sumeyasabit1@gmail.com" 
-              className="social-icon email"
-            >
-              <i className="fas fa-envelope"></i> Email
-            </a>
-            <a 
-              href="https://t.me/yourusername" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="social-icon telegram"
-            >
-              <i className="fab fa-telegram-plane"></i> Telegram
-            </a>
-            <a 
-              href="https://linkedin.com/in/sumeya-sabit-siraj" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="social-icon linkedin"
-            >
-              <i className="fab fa-linkedin-in"></i> LinkedIn
-            </a>
-            <a 
-              href="https://github.com/sumsabit" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="social-icon github"
-            >
-              <i className="fab fa-github"></i> GitHub
-            </a>
-          </div>
+               
+             
         </div>
       </div>
-    </div>
+    
   );
 }
