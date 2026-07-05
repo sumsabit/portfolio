@@ -10,21 +10,15 @@ export class CreateProjectDto {
   @IsString()
   description: string;
 
-  @IsOptional()
-  @IsString()
-  content?: string;
+  
 
   @IsOptional()
   @IsUrl()
-  image?: string;
+  github?: string;
 
   @IsOptional()
   @IsUrl()
-  githubUrl?: string;
-
-  @IsOptional()
-  @IsUrl()
-  liveUrl?: string;
+  demo?: string;
 
   @IsOptional()
   @IsString()

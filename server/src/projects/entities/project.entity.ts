@@ -12,19 +12,11 @@ export class Project {
   slug: string;
 
   @Column('text')
-  description: string;   // NOT NULL
+  description: string;  
 
   @Column({ nullable: true })
-  content: string;
+  github: string;
 
-  @Column({ nullable: true })
-  image: string;
-
-  @Column({ nullable: true })
-  githubUrl: string;
-
-  @Column({ nullable: true })
-  liveUrl: string;
 
   @Column({ nullable: true })
   technologies: string;
@@ -32,15 +24,15 @@ export class Project {
   @Column('jsonb', { nullable: true })
   features: string[];
 
-  @Column({ default: false })
-  featured: boolean;
-
   @CreateDateColumn()
   createdAt: Date;
+
   @Column({ nullable: true })
-demo: string;
-@Column({ nullable: true })
-reportLink: string;
+  demo: string;
+
+  @Column({ nullable: true })
+  reportLink: string;
+
   @UpdateDateColumn()
   updatedAt: Date;
 }

@@ -32,7 +32,7 @@ export default function AdminDashboard() {
     technologies: '',
     github: '',
     demo: '',
-    reportLink: ''   // ✅ Added reportLink
+    reportLink: ''   
   });
   const [editingProjectId, setEditingProjectId] = useState(null);
 
