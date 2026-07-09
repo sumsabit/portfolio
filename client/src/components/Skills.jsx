@@ -13,24 +13,66 @@ export default function Skills() {
     gcTime: 10 * 60 * 1000,
   });
 
-  // Category display names (map to match the reference style)
-  const categoryDisplayNames = {
-    'Languages': 'Languages',
-    'Frontend': 'Frontend',
-    'Backend': 'Backend Development',
-    'Security & Tools': 'Security & Tools',
-    'DevOps & Tools': 'DevOps & Automation',
-    'Other': 'Other',
-  };
-
-  // Skills that appear in the "Tech-stack Highlights" section
-  const highlightSkills = [
-    'Python', 'JavaScript', 'TypeScript', 'React',
-    'Node.js', 'NestJS', 'PostgreSQL', 'Docker',
-    'Git', 'Linux CLI', 'Burp Suite'
+  // ------------------------------------------------------------------
+  // 1. Define the four main categories with display name, icon, and
+  //    which database categories they map to.
+  // ------------------------------------------------------------------
+  const mainCategories = [
+    {
+      key: 'Backend Development',
+      icon: 'fa-server',                // Font Awesome server icon
+      dbCategories: ['Backend', 'Backend Development']
+    },
+    {
+      key: 'Frontend Development',
+      icon: 'fa-laptop-code',           // code on laptop
+      dbCategories: ['Frontend']
+    },
+    {
+      key: 'Security & Tools',
+      icon: 'fa-shield-alt',            // security shield
+      dbCategories: ['Security & Tools']
+    },
+    {
+      key: 'DevOps & Automation',
+      icon: 'fa-cogs',                  // gears
+      dbCategories: ['DevOps & Tools', 'DevOps']
+    }
   ];
 
-  const categoryOrder = ['Languages', 'Frontend', 'Backend', 'Security & Tools', 'DevOps & Tools', 'Other'];
+  // Build a reverse map: databaseCategory -> mainCategoryKey
+  const categoryMap = {};
+  mainCategories.forEach((cat) => {
+    cat.dbCategories.forEach((dbCat) => {
+      categoryMap[dbCat] = cat.key;
+    });
+  });
+
+  // ------------------------------------------------------------------
+  // 2. Process skills: assign to main categories or highlights
+  // ------------------------------------------------------------------
+  const mainSkills = {};
+  mainCategories.forEach((cat) => {
+    mainSkills[cat.key] = [];
+  });
+
+  const highlights = [];
+
+  skillsData.forEach((skill) => {
+    const dbCat = skill.category || 'Other';
+    const mainKey = categoryMap[dbCat];
+    if (mainKey && mainSkills[mainKey] !== undefined) {
+      mainSkills[mainKey].push(skill);
+    } else {
+      highlights.push(skill);
+    }
+  });
+
+  // Sort highlights alphabetically
+  highlights.sort((a, b) => a.name.localeCompare(b.name));
+
+  // Order of categories for rendering
+  const categoryOrder = ['Backend Development', 'Frontend Development', 'Security & Tools', 'DevOps & Automation'];
 
   if (isLoading) {
     return (
@@ -46,29 +88,6 @@ export default function Skills() {
     return <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '2rem' }}>No skills added yet.</p>;
   }
 
-  // Group skills by category
-  const grouped = skillsData.reduce((acc, skill) => {
-    const category = skill.category || 'Other';
-    if (!acc[category]) acc[category] = [];
-    acc[category].push(skill);
-    return acc;
-  }, {});
-
-  const sortedCategories = Object.keys(grouped).sort((a, b) => {
-    if (a === 'Other') return 1;
-    if (b === 'Other') return -1;
-    const idxA = categoryOrder.indexOf(a);
-    const idxB = categoryOrder.indexOf(b);
-    if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-    if (idxA !== -1) return -1;
-    if (idxB !== -1) return 1;
-    return a.localeCompare(b);
-  });
-
-  // Get skills for highlights (only those that exist in the data)
-  const allSkillNames = skillsData.map(s => s.name);
-  const highlighted = highlightSkills.filter(s => allSkillNames.includes(s));
-
   return (
     <section id="skills" className="skills-section">
       <div className="skills-container">
@@ -79,33 +98,40 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* Category Cards with Tags */}
+        {/* ---- Main Category Cards with Icons ---- */}
         <div className="skills-grid">
-          {sortedCategories.map((category) => (
-            <div key={category} className="skill-card">
-              <h3 className="skill-category-title">
-                {categoryDisplayNames[category] || category}
-              </h3>
-              <div className="skill-tags">
-                {grouped[category].map((skill) => (
-                  <span key={skill.id} className="skill-tag">
-                    {skill.icon && <i className={skill.icon}></i>}
-                    {skill.name}
-                    {skill.level && <span className="skill-level">({skill.level})</span>}
-                  </span>
-                ))}
+          {categoryOrder.map((categoryKey) => {
+            const catConfig = mainCategories.find(c => c.key === categoryKey);
+            return (
+              <div key={categoryKey} className="skill-card">
+                <h3 className="skill-category-title">
+                  <i className={catConfig.icon}></i> {categoryKey}
+                </h3>
+                <div className="skill-tags">
+                  {mainSkills[categoryKey].map((skill) => (
+                    <span key={skill.id} className="skill-tag">
+                      {skill.icon && <i className={skill.icon}></i>}
+                      {skill.name}
+                      {skill.level && <span className="skill-level">({skill.level})</span>}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {/* Tech-stack Highlights */}
-        {highlighted.length > 0 && (
+        {/* ---- Tech-stack Highlights ---- */}
+        {highlights.length > 0 && (
           <div className="tech-highlights">
             <h3 className="tech-highlights-title">Tech-stack Highlights</h3>
             <div className="tech-highlights-tags">
-              {highlighted.map((skill) => (
-                <span key={skill} className="highlight-tag">{skill}</span>
+              {highlights.map((skill) => (
+                <span key={skill.id} className="highlight-tag">
+                  {skill.icon && <i className={skill.icon}></i>}
+                  {skill.name}
+                  {skill.level && <span className="skill-level">({skill.level})</span>}
+                </span>
               ))}
             </div>
           </div>
