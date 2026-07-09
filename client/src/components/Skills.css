@@ -85,7 +85,7 @@
 
 .skill-category-header i {
   font-size: 2rem;
-  color: #000000;   /* ✅ black icon */
+  color: var(--text-primary);   /* adapts to theme */
   margin-bottom: 0.3rem;
 }
 
@@ -99,7 +99,7 @@
 }
 
 /* =========================
-   SKILL TAGS (CHIPS) – WHITE BACKGROUND
+   SKILL TAGS (CHIPS) – THEME‑AWARE
 ========================= */
 .skill-tags {
   display: flex;
@@ -112,17 +112,17 @@
   align-items: center;
   gap: 0.3rem;
   padding: 0.25rem 0.75rem;
-  background: #ffffff;          /* ✅ white background */
+  background: var(--bg-tech);
   border-radius: 9999px;
   font-size: 0.8rem;
-  color: #111827;
-  border: 1px solid #d1d5db;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-tech);
   transition: all 0.2s;
   cursor: default;
 }
 .skill-tag:hover {
   border-color: var(--accent);
-  color: #000000;
+  color: var(--text-primary);
 }
 
 .skill-tag i {
@@ -137,7 +137,7 @@
 }
 
 /* =========================
-   TECH-STACK HIGHLIGHTS – ICON ABOVE NAME
+   TECH-STACK HIGHLIGHTS – THEME‑AWARE
 ========================= */
 .tech-highlights {
   margin-top: 3rem;
@@ -165,9 +165,9 @@
   flex-direction: column;
   align-items: center;
   padding: 0.5rem 0.8rem;
-  background: #ffffff;          /* ✅ white background */
+  background: var(--bg-tech);
   border-radius: 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-tech);
   transition: all 0.2s;
   min-width: 70px;
 }
@@ -179,14 +179,14 @@
 
 .highlight-item i {
   font-size: 1.8rem;
-  color: #000000;               /* ✅ black icon */
+  color: var(--text-primary);   /* adapts to theme */
   margin-bottom: 0.2rem;
 }
 
 .highlight-item .highlight-name {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .highlight-item .skill-level {
