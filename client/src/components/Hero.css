@@ -88,7 +88,69 @@
   line-height: 1.2;
   margin-bottom: 0.5rem;
 }
+/* =========================
+   HERO SOCIAL ICONS
+========================= */
+.hero-social-icons {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
 
+.hero-social-icons .social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+}
+.hero-social-icons .social-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Individual brand colors */
+.hero-social-icons .social-icon.email {
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+  border-color: rgba(37, 99, 235, 0.2);
+}
+.hero-social-icons .social-icon.email:hover {
+  background: rgba(37, 99, 235, 0.25);
+}
+
+.hero-social-icons .social-icon.telegram {
+  background: rgba(0, 136, 204, 0.15);
+  color: #60a5fa;
+  border-color: rgba(0, 136, 204, 0.2);
+}
+.hero-social-icons .social-icon.telegram:hover {
+  background: rgba(0, 136, 204, 0.25);
+}
+
+.hero-social-icons .social-icon.linkedin {
+  background: rgba(0, 119, 181, 0.15);
+  color: #60a5fa;
+  border-color: rgba(0, 119, 181, 0.2);
+}
+.hero-social-icons .social-icon.linkedin:hover {
+  background: rgba(0, 119, 181, 0.25);
+}
+
+.hero-social-icons .social-icon.github {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.hero-social-icons .social-icon.github:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
 .hero-title-sub {
   font-size: 2.5rem;
   font-weight: 700;
