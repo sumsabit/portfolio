@@ -85,7 +85,7 @@
 
 .skill-category-header i {
   font-size: 2rem;
-  color: var(--accent);
+  color: #000000;   /* ✅ black icon */
   margin-bottom: 0.3rem;
 }
 
@@ -99,7 +99,7 @@
 }
 
 /* =========================
-   SKILL TAGS (CHIPS)
+   SKILL TAGS (CHIPS) – WHITE BACKGROUND
 ========================= */
 .skill-tags {
   display: flex;
@@ -112,17 +112,17 @@
   align-items: center;
   gap: 0.3rem;
   padding: 0.25rem 0.75rem;
-  background: var(--bg-tech);
+  background: #ffffff;          /* ✅ white background */
   border-radius: 9999px;
   font-size: 0.8rem;
-  color: var(--text-secondary);
-  border: 1px solid var(--border-tech);
+  color: #111827;
+  border: 1px solid #d1d5db;
   transition: all 0.2s;
   cursor: default;
 }
 .skill-tag:hover {
   border-color: var(--accent);
-  color: var(--text-primary);
+  color: #000000;
 }
 
 .skill-tag i {
@@ -136,75 +136,6 @@
   margin-left: 0.1rem;
 }
 
-/* =========================
-   TECH-STACK HIGHLIGHTS
-========================= */
-.tech-highlights {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.tech-highlights-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.8rem;
-  text-align: center;
-}
-
-.tech-highlights-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.7rem;
-}
-
-.highlight-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.4rem 1.2rem;
-  background: var(--bg-tech);
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  border: 1px solid var(--border-tech);
-  transition: all 0.2s;
-}
-.highlight-tag:hover {
-  border-color: var(--accent);
-  box-shadow: 0 4px 12px var(--shadow-color);
-  transform: translateY(-2px);
-}
-
-.highlight-tag i {
-  font-size: 0.9rem;
-  color: var(--accent);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  .skills-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-  .tech-highlights-tags {
-    gap: 0.5rem;
-  }
-  .highlight-tag {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.7rem;
-  }
-}
 /* =========================
    TECH-STACK HIGHLIGHTS – ICON ABOVE NAME
 ========================= */
@@ -234,9 +165,9 @@
   flex-direction: column;
   align-items: center;
   padding: 0.5rem 0.8rem;
-  background: var(--bg-tech);
+  background: #ffffff;          /* ✅ white background */
   border-radius: 0.75rem;
-  border: 1px solid var(--border-tech);
+  border: 1px solid #d1d5db;
   transition: all 0.2s;
   min-width: 70px;
 }
@@ -248,18 +179,46 @@
 
 .highlight-item i {
   font-size: 1.8rem;
-  color: var(--accent);
+  color: #000000;               /* ✅ black icon */
   margin-bottom: 0.2rem;
 }
 
 .highlight-item .highlight-name {
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: #111827;
 }
 
 .highlight-item .skill-level {
   font-size: 0.65rem;
   opacity: 0.6;
   color: var(--text-muted);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .tech-highlights-tags {
+    gap: 0.5rem;
+  }
+  .highlight-item {
+    min-width: 60px;
+    padding: 0.3rem 0.6rem;
+  }
+  .highlight-item i {
+    font-size: 1.4rem;
+  }
+  .highlight-item .highlight-name {
+    font-size: 0.7rem;
+  }
 }
