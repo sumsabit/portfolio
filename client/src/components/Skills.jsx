@@ -13,34 +13,29 @@ export default function Skills() {
     gcTime: 10 * 60 * 1000,
   });
 
-  // ------------------------------------------------------------------
-  // 1. Define the four main categories with display name, icon, and
-  //    which database categories they map to.
-  // ------------------------------------------------------------------
   const mainCategories = [
     {
       key: 'Backend Development',
-      icon: 'fa-server',                // Font Awesome server icon
+      icon: 'fa-server',
       dbCategories: ['Backend', 'Backend Development']
     },
     {
       key: 'Frontend Development',
-      icon: 'fa-laptop-code',           // code on laptop
+      icon: 'fa-laptop-code',
       dbCategories: ['Frontend']
     },
     {
       key: 'Security & Tools',
-      icon: 'fa-shield-alt',            // security shield
+      icon: 'fa-shield-alt',
       dbCategories: ['Security & Tools']
     },
     {
       key: 'DevOps & Automation',
-      icon: 'fa-cogs',                  // gears
+      icon: 'fa-cogs',
       dbCategories: ['DevOps & Tools', 'DevOps']
     }
   ];
 
-  // Build a reverse map: databaseCategory -> mainCategoryKey
   const categoryMap = {};
   mainCategories.forEach((cat) => {
     cat.dbCategories.forEach((dbCat) => {
@@ -48,9 +43,6 @@ export default function Skills() {
     });
   });
 
-  // ------------------------------------------------------------------
-  // 2. Process skills: assign to main categories or highlights
-  // ------------------------------------------------------------------
   const mainSkills = {};
   mainCategories.forEach((cat) => {
     mainSkills[cat.key] = [];
@@ -68,10 +60,8 @@ export default function Skills() {
     }
   });
 
-  // Sort highlights alphabetically
   highlights.sort((a, b) => a.name.localeCompare(b.name));
 
-  // Order of categories for rendering
   const categoryOrder = ['Backend Development', 'Frontend Development', 'Security & Tools', 'DevOps & Automation'];
 
   if (isLoading) {
@@ -98,7 +88,7 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* ---- Main Category Cards with Icons ---- */}
+        {/* ---- Main Category Cards (vertical list) ---- */}
         <div className="skills-grid">
           {categoryOrder.map((categoryKey) => {
             const catConfig = mainCategories.find(c => c.key === categoryKey);
@@ -107,13 +97,13 @@ export default function Skills() {
                 <h3 className="skill-category-title">
                   <i className={catConfig.icon}></i> {categoryKey}
                 </h3>
-                <div className="skill-tags">
+                <div className="skill-list">
                   {mainSkills[categoryKey].map((skill) => (
-                    <span key={skill.id} className="skill-tag">
-                      {skill.icon && <i className={skill.icon}></i>}
-                      {skill.name}
+                    <div key={skill.id} className="skill-list-item">
+                      <span className="skill-icon">{skill.icon && <i className={skill.icon}></i>}</span>
+                      <span className="skill-name">{skill.name}</span>
                       {skill.level && <span className="skill-level">({skill.level})</span>}
-                    </span>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -121,7 +111,7 @@ export default function Skills() {
           })}
         </div>
 
-        {/* ---- Tech-stack Highlights ---- */}
+        {/* ---- Tech-stack Highlights (tags) ---- */}
         {highlights.length > 0 && (
           <div className="tech-highlights">
             <h3 className="tech-highlights-title">Tech-stack Highlights</h3>
