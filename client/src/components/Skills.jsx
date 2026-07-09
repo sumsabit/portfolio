@@ -122,17 +122,17 @@ export default function Skills() {
           })}
         </div>
 
-        {/* ---- Tech-stack Highlights ---- */}
+        {/* ---- Tech‑stack Highlights – icons above names ---- */}
         {highlights.length > 0 && (
           <div className="tech-highlights">
             <h3 className="tech-highlights-title">Tech-stack Highlights</h3>
             <div className="tech-highlights-tags">
               {highlights.map((skill) => (
-                <span key={skill.id} className="highlight-tag">
+                <div key={skill.id} className="highlight-item">
                   {skill.icon && <i className={skill.icon}></i>}
-                  {skill.name}
+                  <span className="highlight-name">{skill.name}</span>
                   {skill.level && <span className="skill-level">({skill.level})</span>}
-                </span>
+                </div>
               ))}
             </div>
           </div>
