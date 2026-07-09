@@ -26,13 +26,7 @@ export default function Hero() {
             </a>
           </div>
           <div className="hero-socials">
-            <a
-              href="mailto:sumeyasabit1@gmail.com"
-              className="social-icon email"
-              aria-label="Email"
-            >
-              <i className="fas fa-envelope"></i>
-            </a>
+            
             <a
               href="https://t.me/yourusername"
               target="_blank"
