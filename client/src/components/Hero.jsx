@@ -25,11 +25,6 @@ export default function Hero() {
               📄 Download CV
             </a>
           </div>
-          <div className="hero-meta">
-            <span className="hero-meta-item">🎯 Open to opportunities</span>
-            <span className="hero-meta-dot">•</span>
-            <span className="hero-meta-item">📍 Addis Ababa, Ethiopia</span>
-          </div>
           <div className="hero-socials">
             <a
               href="mailto:sumeyasabit1@gmail.com"
@@ -39,7 +34,7 @@ export default function Hero() {
               <i className="fas fa-envelope"></i>
             </a>
             <a
-              href="https://t.me/@sumsabit"
+              href="https://t.me/yourusername"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon telegram"

@@ -1,6 +1,4 @@
-/* =========================
-   HERO SECTION – MUKEREM STYLE
-========================= */
+
 .hero-section {
   min-height: 90vh;
   display: flex;
@@ -113,22 +111,9 @@
   transform: scale(1.02);
 }
 
-/* Meta – availability + location */
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-.hero-meta-dot {
-  color: var(--text-muted);
-  opacity: 0.4;
-}
-
-/* Social Icons */
+/* =========================
+   HERO SOCIAL ICONS – BRAND COLORS
+========================= */
 .hero-socials {
   display: flex;
   gap: 0.8rem;
@@ -140,33 +125,52 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   font-size: 1.2rem;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  background: transparent;
-}
-.hero-socials .social-icon:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 8px 20px var(--shadow-color);
+  border: none;
+  color: #ffffff;
 }
 
-/* Social hover backgrounds */
+/* Email – Blue */
+.hero-socials .social-icon.email {
+  background: #2563eb;
+}
 .hero-socials .social-icon.email:hover {
-  background: rgba(37, 99, 235, 0.08);
+  background: #1d4ed8;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Telegram – Blue */
+.hero-socials .social-icon.telegram {
+  background: #0088cc;
 }
 .hero-socials .social-icon.telegram:hover {
-  background: rgba(0, 136, 204, 0.08);
+  background: #0077b5;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 136, 204, 0.3);
+}
+
+/* LinkedIn – Blue */
+.hero-socials .social-icon.linkedin {
+  background: #0077b5;
 }
 .hero-socials .social-icon.linkedin:hover {
-  background: rgba(0, 119, 181, 0.08);
+  background: #005f8a;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 119, 181, 0.3);
+}
+
+/* GitHub – Dark */
+.hero-socials .social-icon.github {
+  background: #24292e;
 }
 .hero-socials .social-icon.github:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: #1a1e22;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(36, 41, 46, 0.3);
 }
