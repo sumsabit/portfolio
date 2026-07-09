@@ -14,8 +14,8 @@ export default function Skills() {
   });
 
   // ------------------------------------------------------------------
-  // 1. Define the four main categories with display name, icon, and
-  //    which database categories they map to.
+  // 1. Define the four main categories with display name, icon (Font Awesome),
+  //    and which database categories they map to.
   // ------------------------------------------------------------------
   const mainCategories = [
     {
@@ -71,6 +71,7 @@ export default function Skills() {
   // Sort highlights alphabetically
   highlights.sort((a, b) => a.name.localeCompare(b.name));
 
+  // Order of categories for rendering
   const categoryOrder = ['Backend Development', 'Frontend Development', 'Security & Tools', 'DevOps & Automation'];
 
   if (isLoading) {
@@ -97,15 +98,16 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* ---- Main Category Cards with Icons ---- */}
+        {/* ---- Main Category Cards with Icons Above ---- */}
         <div className="skills-grid">
           {categoryOrder.map((categoryKey) => {
             const catConfig = mainCategories.find(c => c.key === categoryKey);
             return (
               <div key={categoryKey} className="skill-card">
-                <h3 className="skill-category-title">
-                  <i className={catConfig.icon}></i> {categoryKey}
-                </h3>
+                <div className="skill-category-header">
+                  <i className={catConfig.icon}></i>
+                  <h3 className="skill-category-title">{categoryKey}</h3>
+                </div>
                 <div className="skill-tags">
                   {mainSkills[categoryKey].map((skill) => (
                     <span key={skill.id} className="skill-tag">
