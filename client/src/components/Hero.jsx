@@ -16,12 +16,14 @@ export default function Hero() {
             Passionate about cybersecurity, frontend development, backend development, and building secure, scalable applications.
           </p>
           <div className="hero-buttons">
-            <Link to="/projects" className="hero-btn-primary">
-              View My Work
-            </Link>
-            <Link to="/contact" className="hero-btn-secondary">
+            <Link to="/contact" className="hero-btn-primary">
               Contact Me
             </Link>
+           
+              <a href="/Sumeya_CV.pdf" download="Sumeya_Sabit_CV.pdf" className="hero-btn-secondary">
+              📄 Download CV
+             </a>
+            
           </div>
           <div className="hero-meta">
             <span className="hero-meta-item">

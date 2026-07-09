@@ -33,7 +33,7 @@ export default function Projects() {
             My <span>Projects</span>
           </h2>
           <p className="projects-subtitle">
-            A selection of my work – from AI-powered systems to security research.
+            A selection of my work .
           </p>
         </div>
 
