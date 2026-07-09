@@ -34,13 +34,16 @@
   max-width: 600px;
   margin: 0.5rem auto 0;
   line-height: 1.6;
-  word-wrap: break-word;
 }
 
+/* =========================
+   SKILLS GRID – CARDS
+========================= */
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 @media (min-width: 768px) {
@@ -77,37 +80,102 @@
   letter-spacing: 0.02em;
 }
 
-.skill-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* =========================
+   SKILL TAGS (CHIPS)
+========================= */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.skill-list-item {
-  display: flex;
+.skill-tag {
+  display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tech);
+  border-radius: 9999px;
+  font-size: 0.8rem;
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  padding: 0.3rem 0;
-  transition: color 0.2s;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  border: 1px solid var(--border-tech);
+  transition: all 0.2s;
+  cursor: default;
 }
-.skill-list-item:hover {
+.skill-tag:hover {
+  border-color: var(--accent);
   color: var(--text-primary);
 }
 
-.skill-list-item .skill-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  flex-shrink: 0;
-}
-.skill-list-item .skill-icon i {
-  font-size: 1.6rem;
-  width: 1.6rem;
-  text-align: center;
+.skill-tag i {
+  font-size: 0.9rem;
   color: var(--accent);
+}
+
+.skill-level {
+  font-size: 0.65rem;
+  opacity: 0.6;
+  margin-left: 0.1rem;
+}
+
+/* =========================
+   TECH-STACK HIGHLIGHTS
+========================= */
+.tech-highlights {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.tech-highlights-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.tech-highlights-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.highlight-tag {
+  padding: 0.4rem 1.2rem;
+  background: var(--bg-tech);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  border: 1px solid var(--border-tech);
+  transition: all 0.2s;
+}
+.highlight-tag:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .tech-highlights-tags {
+    gap: 0.5rem;
+  }
+  .highlight-tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+  }
 }

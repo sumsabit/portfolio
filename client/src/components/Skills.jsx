@@ -13,6 +13,23 @@ export default function Skills() {
     gcTime: 10 * 60 * 1000,
   });
 
+  // Category display names (map to match the reference style)
+  const categoryDisplayNames = {
+    'Languages': 'Languages',
+    'Frontend': 'Frontend',
+    'Backend': 'Backend Development',
+    'Security & Tools': 'Security & Tools',
+    'DevOps & Tools': 'DevOps & Automation',
+    'Other': 'Other',
+  };
+
+  // Skills that appear in the "Tech-stack Highlights" section
+  const highlightSkills = [
+    'Python', 'JavaScript', 'TypeScript', 'React',
+    'Node.js', 'NestJS', 'PostgreSQL', 'Docker',
+    'Git', 'Linux CLI', 'Burp Suite'
+  ];
+
   const categoryOrder = ['Languages', 'Frontend', 'Backend', 'Security & Tools', 'DevOps & Tools', 'Other'];
 
   if (isLoading) {
@@ -33,12 +50,7 @@ export default function Skills() {
   const grouped = skillsData.reduce((acc, skill) => {
     const category = skill.category || 'Other';
     if (!acc[category]) acc[category] = [];
-    let icon = skill.icon ? <i className={skill.icon}></i> : null;
-    acc[category].push({
-      name: skill.level ? `${skill.name} (${skill.level})` : skill.name,
-      icon,
-      id: skill.id,
-    });
+    acc[category].push(skill);
     return acc;
   }, {});
 
@@ -53,6 +65,10 @@ export default function Skills() {
     return a.localeCompare(b);
   });
 
+  // Get skills for highlights (only those that exist in the data)
+  const allSkillNames = skillsData.map(s => s.name);
+  const highlighted = highlightSkills.filter(s => allSkillNames.includes(s));
+
   return (
     <section id="skills" className="skills-section">
       <div className="skills-container">
@@ -62,21 +78,38 @@ export default function Skills() {
             Technologies and tools I use across full-stack development and security.
           </p>
         </div>
+
+        {/* Category Cards with Tags */}
         <div className="skills-grid">
           {sortedCategories.map((category) => (
             <div key={category} className="skill-card">
-              <h3 className="skill-category-title">{category}</h3>
-              <ul className="skill-list">
-                {grouped[category].map((item, idx) => (
-                  <li key={idx} className="skill-list-item">
-                    <span className="skill-icon">{item.icon}</span>
-                    <span>{item.name}</span>
-                  </li>
+              <h3 className="skill-category-title">
+                {categoryDisplayNames[category] || category}
+              </h3>
+              <div className="skill-tags">
+                {grouped[category].map((skill) => (
+                  <span key={skill.id} className="skill-tag">
+                    {skill.icon && <i className={skill.icon}></i>}
+                    {skill.name}
+                    {skill.level && <span className="skill-level">({skill.level})</span>}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* Tech-stack Highlights */}
+        {highlighted.length > 0 && (
+          <div className="tech-highlights">
+            <h3 className="tech-highlights-title">Tech-stack Highlights</h3>
+            <div className="tech-highlights-tags">
+              {highlighted.map((skill) => (
+                <span key={skill} className="highlight-tag">{skill}</span>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
