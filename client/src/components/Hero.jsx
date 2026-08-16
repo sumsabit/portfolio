@@ -21,7 +21,7 @@ export default function Hero() {
             <Link to="/contact" className="hero-btn-primary">
               Contact Me
             </Link>
-            <a href="/Sumeya_CV.pdf" download="Sumeya_Sabit_CV.pdf" className="hero-btn-secondary">
+            <a href="/Sumeya_Cv.pdf" download="Sumeya_Cv.pdf" className="hero-btn-secondary">
               📄 Download CV
             </a>
           </div>
