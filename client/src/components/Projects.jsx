@@ -1,50 +1,43 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import './Projects.css';
+import api from '../api/client';
 
 export default function Projects() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { data: projects = [], isLoading } = useQuery({
+    queryKey: ['projects'],
+    queryFn: async () => {
+      const res = await api.get('/projects');
+      return res.data;
+    },
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000,   // 10 minutes (formerly cacheTime)
+  });
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/projects');
-        if (!response.ok) throw new Error('Failed to fetch');
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProjects();
-  }, []);
-
-  if (loading) {
-    return <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '2rem' }}>Loading projects...</p>;
+  if (isLoading) {
+    return (
+      <div className="projects-loading">
+        <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: '2rem' }}>
+          Loading projects...
+        </p>
+      </div>
+    );
   }
 
   return (
     <section className="projects-section">
       <div className="projects-container">
         <div className="projects-header">
-          <h2 className="projects-title">
-            My <span>Projects</span>
-          </h2>
-          <p className="projects-subtitle">
-            A selection of my work – from AI-powered systems to security research.
-          </p>
+          <h2 className="projects-title">My <span>Projects</span></h2>
+          <p className="projects-subtitle">A selection of my work.</p>
         </div>
 
         <div className="projects-grid">
           {projects.map((project, index) => {
             const { title, description, features, technologies, github, reportLink, featured } = project;
 
-            // Convert technologies to array if it's a string
             let techArray = [];
             if (typeof technologies === 'string') {
-              techArray = technologies.split(',').map(t => t.trim()).filter(t => t);
+              techArray = technologies.split(',').map(t => t.trim()).filter(Boolean);
             } else if (Array.isArray(technologies)) {
               techArray = technologies;
             }
@@ -88,4 +81,4 @@ export default function Projects() {
       </div>
     </section>
   );
-}         
+}      

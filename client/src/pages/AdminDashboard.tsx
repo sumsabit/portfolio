@@ -24,15 +24,16 @@ export default function AdminDashboard() {
 
   // Projects state
   const [projects, setProjects] = useState([]);
- const [projectForm, setProjectForm] = useState({
-  title: '',
-  slug: '',
-  description: '',
-  features: [],
-  technologies: '',
-  github: '',
-  demo:''
-});
+  const [projectForm, setProjectForm] = useState({
+    title: '',
+    slug: '',
+    description: '',
+    features: [],
+    technologies: '',
+    github: '',
+    demo: '',
+    reportLink: ''   
+  });
   const [editingProjectId, setEditingProjectId] = useState(null);
 
   // Fetch all data
@@ -133,7 +134,7 @@ export default function AdminDashboard() {
     } else {
       await api.post('/projects', projectForm);
     }
-    setProjectForm({ title: '', slug: '', description: '', technologies: '', github: '' });
+    setProjectForm({ title: '', slug: '', description: '', features: [], technologies: '', github: '', demo: '', reportLink: '' });
     fetchProjects();
     setLoading(false);
   };
@@ -145,18 +146,20 @@ export default function AdminDashboard() {
     }
   };
 
- const handleProjectEdit = (project) => {
-  setEditingProjectId(project.id);
-  setProjectForm({
-    title: project.title,
-    slug: project.slug,
-    description: project.description,
-    features: project.features || [],
-    technologies: project.technologies || '',
-    github: project.github || '',
-    demo:project.demo || '',
-  });
-};
+  const handleProjectEdit = (project) => {
+    setEditingProjectId(project.id);
+    setProjectForm({
+      title: project.title,
+      slug: project.slug,
+      description: project.description,
+      features: project.features || [],
+      technologies: project.technologies || '',
+      github: project.github || '',
+      demo: project.demo || '',
+      reportLink: project.reportLink || '',
+    });
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/admin/login');
@@ -346,87 +349,98 @@ export default function AdminDashboard() {
           )}
 
           {/* Projects Tab */}
-         {/* Projects Tab */}
-{activeTab === 'projects' && (
-  <div className="admin-section">
-    <h2>Manage Projects</h2>
-    <form onSubmit={handleProjectSubmit}>
-      <input
-        placeholder="Title"
-        value={projectForm.title}
-        onChange={(e) => setProjectForm({ ...projectForm, title: e.target.value })}
-        className="admin-form-input"
-        required
-      />
-      <input
-        placeholder="Slug"
-        value={projectForm.slug}
-        onChange={(e) => setProjectForm({ ...projectForm, slug: e.target.value })}
-        className="admin-form-input"
-        required
-      />
-      <input
-        placeholder="Description"
-        value={projectForm.description}
-        onChange={(e) => setProjectForm({ ...projectForm, description: e.target.value })}
-        className="admin-form-input"
-        required
-      />
-      <textarea
-        placeholder="Features (one per line)"
-        value={projectForm.features?.join('\n') || ''}
-        onChange={(e) => setProjectForm({ 
-          ...projectForm, 
-          features: e.target.value.split('\n').filter(f => f.trim()) 
-        })}
-        className="admin-form-input"
-        rows="4"
-      />
-      <input
-        placeholder="Technologies (comma separated)"
-        value={projectForm.technologies}
-        onChange={(e) => setProjectForm({ ...projectForm, technologies: e.target.value })}
-        className="admin-form-input"
-      />
-      <input
-        placeholder="GitHub URL (optional)"
-        value={projectForm.github || ''}
-        onChange={(e) => setProjectForm({ ...projectForm, github: e.target.value })}
-        className="admin-form-input"
-      />
-      <div className="admin-form-buttons">
-        <button type="submit" className="admin-submit-btn">
-          {editingProjectId ? 'Update Project' : 'Create Project'}
-        </button>
-        {editingProjectId && (
-          <button
-            type="button"
-            onClick={() => {
-              setEditingProjectId(null);
-              setProjectForm({ title: '', slug: '', description: '', features: [], technologies: '', github: '' });
-            }}
-            className="admin-cancel-btn"
-          >
-            Cancel
-          </button>
-        )}
-      </div>
-    </form>
+          {activeTab === 'projects' && (
+            <div className="admin-section">
+              <h2>Manage Projects</h2>
+              <form onSubmit={handleProjectSubmit}>
+                <input
+                  placeholder="Title"
+                  value={projectForm.title}
+                  onChange={(e) => setProjectForm({ ...projectForm, title: e.target.value })}
+                  className="admin-form-input"
+                  required
+                />
+                <input
+                  placeholder="Slug"
+                  value={projectForm.slug}
+                  onChange={(e) => setProjectForm({ ...projectForm, slug: e.target.value })}
+                  className="admin-form-input"
+                  required
+                />
+                <input
+                  placeholder="Description"
+                  value={projectForm.description}
+                  onChange={(e) => setProjectForm({ ...projectForm, description: e.target.value })}
+                  className="admin-form-input"
+                  required
+                />
+                <textarea
+                  placeholder="Features (one per line)"
+                  value={projectForm.features?.join('\n') || ''}
+                  onChange={(e) => setProjectForm({
+                    ...projectForm,
+                    features: e.target.value.split('\n').filter(f => f.trim())
+                  })}
+                  className="admin-form-input"
+                  rows="4"
+                />
+                <input
+                  placeholder="Technologies (comma separated)"
+                  value={projectForm.technologies}
+                  onChange={(e) => setProjectForm({ ...projectForm, technologies: e.target.value })}
+                  className="admin-form-input"
+                />
+                <input
+                  placeholder="GitHub URL (optional)"
+                  value={projectForm.github || ''}
+                  onChange={(e) => setProjectForm({ ...projectForm, github: e.target.value })}
+                  className="admin-form-input"
+                />
+                <input
+                  placeholder="Live Demo URL (optional)"
+                  value={projectForm.demo || ''}
+                  onChange={(e) => setProjectForm({ ...projectForm, demo: e.target.value })}
+                  className="admin-form-input"
+                />
+                <input
+                  placeholder="Report Link (optional, e.g., /dvwa-report.pdf)"
+                  value={projectForm.reportLink || ''}
+                  onChange={(e) => setProjectForm({ ...projectForm, reportLink: e.target.value })}
+                  className="admin-form-input"
+                />
+                <div className="admin-form-buttons">
+                  <button type="submit" className="admin-submit-btn">
+                    {editingProjectId ? 'Update Project' : 'Create Project'}
+                  </button>
+                  {editingProjectId && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingProjectId(null);
+                        setProjectForm({ title: '', slug: '', description: '', features: [], technologies: '', github: '', demo: '', reportLink: '' });
+                      }}
+                      className="admin-cancel-btn"
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
+              </form>
 
-    <div className="admin-list">
-      {projects.map((p) => (
-        <div key={p.id} className="admin-list-item">
-          <span><strong>{p.title}</strong></span>
-          <div>
-            <button onClick={() => handleProjectEdit(p)} className="admin-edit-btn">Edit</button>
-            <button onClick={() => handleProjectDelete(p.id)} className="admin-delete-btn">Delete</button>
-          </div>
+              <div className="admin-list">
+                {projects.map((p) => (
+                  <div key={p.id} className="admin-list-item">
+                    <span><strong>{p.title}</strong></span>
+                    <div>
+                      <button onClick={() => handleProjectEdit(p)} className="admin-edit-btn">Edit</button>
+                      <button onClick={() => handleProjectDelete(p.id)} className="admin-delete-btn">Delete</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-      ))}
-    </div>
-  </div>
-)}
-</div>
       </div>
     </div>
   );

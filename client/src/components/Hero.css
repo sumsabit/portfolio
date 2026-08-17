@@ -189,3 +189,44 @@
   align-items: center;
   gap: 0.5rem;
 }
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+.hero-socials {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.social-icon:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+
+.social-icon.github:hover {
+  color: #181717;
+}
+
+.social-icon.linkedin:hover {
+  
+  color: #181717;
+}
+
+.social-icon.telegram:hover {
+  color: #229ed9;
+}

@@ -13,12 +13,12 @@ import { AboutModule } from './about/about.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
     type: 'postgres',
-    url: process.env.DATABASE_URL,
-    entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    synchronize: true,
-    logging: true,
-    ssl: {
-      rejectUnauthorized: false,
+  url: process.env.DATABASE_URL,
+  entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  synchronize: true,
+  logging: true,
+  ssl: {
+    rejectUnauthorized: false,
     },
   }),
     ProjectsModule,

@@ -19,7 +19,7 @@ export class ProjectsService {
 
   findAll() {
     return this.projectRepository.find({
-      order: { createdAt: 'DESC' },
+      order: { createdAt: 'ASC' },
     });
   }
 

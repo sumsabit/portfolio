@@ -1,53 +1,130 @@
-/* Admin Tabs */
-.admin-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding-bottom: 0.5rem;
-  flex-wrap: wrap;
+.admin-dashboard {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  padding: 2rem 1.5rem;
 }
 
-.admin-tabs button {
-  padding: 0.5rem 1.2rem;
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.9rem;
+.admin-container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 2rem;
+}
+
+.admin-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.admin-title span {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.admin-logout-btn {
+  padding: 0.4rem 1.2rem;
+  background: rgba(220, 38, 38, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
-  border-radius: 0.5rem;
+}
+.admin-logout-btn:hover {
+  background: rgba(220, 38, 38, 0.25);
+}
+
+/* ✅ Tabs - ensure visibility */
+.admin-tabs {
+  display: flex !important;
+  gap: 0.5rem !important;
+  margin-bottom: 2rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding-bottom: 0.5rem !important;
+  flex-wrap: wrap !important;
+}
+
+.admin-tabs button {
+  padding: 0.5rem 1.2rem !important;
+  background: transparent !important;
+  border: none !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+  border-radius: 0.5rem !important;
 }
 .admin-tabs button:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 .admin-tabs button.active {
-  background: rgba(37, 99, 235, 0.15);
-  color: #60a5fa;
+  background: rgba(37, 99, 235, 0.15) !important;
+  color: #60a5fa !important;
 }
 
-/* Admin Content */
-.admin-content {
-  margin-top: 1rem;
-}
-
-.admin-section {
-  background: rgba(10, 10, 10, 0.4);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 1rem;
-  padding: 1.5rem;
-}
-.admin-section h2 {
+.admin-form-input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
   color: #ffffff;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
 }
-.admin-section form {
+.admin-form-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.admin-form-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.admin-submit-btn {
+  padding: 0.6rem 1.5rem;
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+}
+.admin-submit-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.01);
+}
+.admin-cancel-btn {
+  padding: 0.6rem 1.5rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.admin-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .admin-list {
@@ -73,7 +150,35 @@
   display: flex;
   gap: 0.5rem;
 }
-
+.admin-edit-btn {
+  padding: 0.2rem 0.8rem;
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.admin-edit-btn:hover {
+  background: rgba(37, 99, 235, 0.25);
+}
+.admin-delete-btn {
+  padding: 0.2rem 0.8rem;
+  background: rgba(220, 38, 38, 0.12);
+  color: #ef4444;
+  border: 1px solid rgba(220, 38, 38, 0.12);
+  border-radius: 0.3rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.admin-delete-btn:hover {
+  background: rgba(220, 38, 38, 0.2);
+}
+.admin-empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.25);
+  padding: 2rem 0;
+}
 .admin-loading {
   color: #60a5fa;
   text-align: center;

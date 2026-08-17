@@ -37,10 +37,14 @@
   word-wrap: break-word;
 }
 
+/* =========================
+   SKILLS GRID – CARDS
+========================= */
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 @media (min-width: 768px) {
@@ -69,45 +73,152 @@
   transform: translateY(-2px);
 }
 
+/* =========================
+   CATEGORY HEADER – ICON ABOVE TITLE
+========================= */
+.skill-category-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.skill-category-header i {
+  font-size: 2rem;
+  color: var(--text-primary);   /* adapts to theme */
+  margin-bottom: 0.3rem;
+}
+
 .skill-category-title {
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--accent);
-  margin-bottom: 0.75rem;
   letter-spacing: 0.02em;
-}
-
-.skill-list {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  text-align: center;
 }
 
-.skill-list-item {
+/* =========================
+   SKILL TAGS (CHIPS) – THEME‑AWARE
+========================= */
+.skill-tags {
   display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  padding: 0.3rem 0;
-  transition: color 0.2s;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
-.skill-list-item:hover {
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-tech);
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-tech);
+  transition: all 0.2s;
+  cursor: default;
+}
+.skill-tag:hover {
+  border-color: var(--accent);
   color: var(--text-primary);
 }
 
-.skill-list-item .skill-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  flex-shrink: 0;
-}
-.skill-list-item .skill-icon i {
-  font-size: 1.6rem;
-  width: 1.6rem;
-  text-align: center;
+.skill-tag i {
+  font-size: 0.9rem;
   color: var(--accent);
+}
+
+.skill-level {
+  font-size: 0.65rem;
+  opacity: 0.6;
+  margin-left: 0.1rem;
+}
+
+/* =========================
+   TECH-STACK HIGHLIGHTS – THEME‑AWARE
+========================= */
+.tech-highlights {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.tech-highlights-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.tech-highlights-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.highlight-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  background: var(--bg-tech);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-tech);
+  transition: all 0.2s;
+  min-width: 70px;
+}
+.highlight-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.highlight-item i {
+  font-size: 1.8rem;
+  color: var(--text-primary);   /* adapts to theme */
+  margin-bottom: 0.2rem;
+}
+
+.highlight-item .highlight-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.highlight-item .skill-level {
+  font-size: 0.65rem;
+  opacity: 0.6;
+  color: var(--text-muted);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .tech-highlights-tags {
+    gap: 0.5rem;
+  }
+  .highlight-item {
+    min-width: 60px;
+    padding: 0.3rem 0.6rem;
+  }
+  .highlight-item i {
+    font-size: 1.4rem;
+  }
+  .highlight-item .highlight-name {
+    font-size: 0.7rem;
+  }
 }
